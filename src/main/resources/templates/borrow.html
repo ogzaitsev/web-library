@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+    <script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    <title>Borrow a Book</title>
+</head>
+<body>
+<div th:insert="~{fragment :: top-panel}"></div>
+
+<h2>интерфейс взятия книги на прочтение</h2>
+
+<div class="container mt-5">
+    <h4>Введите ФИО читателя</h4>
+    <form th:action="@{/borrow/forName}" method="get">
+        <div class="mb-3">
+            <label for="name" class="form-label">ФИО</label>
+            <input type="text" class="form-control" id="name" name="name" required>
+        </div>
+        <div class="mb-3">
+            <button type="submit" class="btn btn-primary">Ввод</button>
+        </div>
+
+        <div th:if="${error}" class="alert alert-danger mt-3">
+            <span th:text="${error}"></span>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

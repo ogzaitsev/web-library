@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+    <script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    <title>Add Book</title>
+</head>
+<body>
+<div th:insert="~{fragment :: top-panel}"></div>
+
+<div class="container mt-4">
+  <h2>Добавление новой книги</h2>
+
+  <form th:action="@{/books}" method="post">
+    <div class="mb-3">
+      <label for="title" class="form-label">Название книги</label>
+      <input type="text" class="form-control" id="title" name="title" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="author" class="form-label">Автор</label>
+      <input type="text" class="form-control" id="author" name="author" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="isbn" class="form-label">ISBN</label>
+      <input type="text" class="form-control" id="isbn" name="isbn"
+             pattern="\d{13}" title="ISBN должен содержать 13 цифр" required>
+    </div>
+
+    <div>
+      <a href="/books" class="btn btn-secondary">Отмена</a>
+      <button type="submit" class="btn btn-primary">Сохранить</button>
+    </div>
+  </form>
+</div>
+
+</body>
+</html>
